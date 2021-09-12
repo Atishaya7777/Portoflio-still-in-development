@@ -1,38 +1,262 @@
-.App {
+/* This is for importing the fonts */
+@import "./Others/OtherCSS/fonts.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container-page {
+  position: relative;
+}
+
+/* Hero section starts here */
+.hero-container {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+    url("./Others/Images/hero-picture.jpeg");
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.hero-central-text {
+  font-family: "Roboto", sans-serif;
+  color: rgb(204, 204, 204);
+  position: absolute;
+  z-index: 1;
+}
+/* Hero section ends here */
+
+/* Navigation bar section starts from here */
+
+/* Basic navigation layout for only the general structure */
+.navbar {
+  position: absolute;
+  top: 0;
+  z-index: 100;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  width: 100%;
+}
+
+.jsparticles {
+  position: absolute;
+  z-index: 2;
+}
+
+.navbar-menu {
+  max-height: 100px;
+}
+
+.profile-picture {
+  height: 40px;
+  border-radius: 50%;
+  filter: brightness(70%);
+}
+
+.navbar li {
   text-align: center;
+  padding: 10px;
+  flex-grow: 1;
+  padding: 10px 0px;
+  word-spacing: 1px;
+  letter-spacing: 1px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar a {
+  list-style-type: none;
+  text-decoration: none;
+  color: rgb(194, 186, 186);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.item:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navbar a:hover,
+.item.active:hover {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-picture:hover {
+  filter: brightness(100%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.submenu {
+  list-style-type: none;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.item.active {
+  background-color: black;
+  border-bottom: 0.5px solid rgb(117, 117, 117);
+  width: 100%;
+}
+
+.subitem {
+  border-bottom: 0.5px solid rgb(117, 117, 117);
+}
+
+.subitem:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Navigation bar styling for Desktop menus */
+
+@media all and (min-width: 1200px) {
+  .hero-central-text {
+    font-size: 10vw;
+    left: calc(50% - 20vw);
+    top: calc(50% - 5vw);
   }
-  to {
-    transform: rotate(360deg);
+
+  .navbar {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    max-height: 100px;
+  }
+
+  .navbar ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: center;
+  }
+
+  .navbar li {
+    position: relative;
+    display: block;
+    width: auto;
+    text-align: inherit;
+    padding: 0px;
+  }
+
+  a {
+    display: block;
+    padding: 40px 10px;
+  }
+
+  .profile-picture {
+    height: 60px;
+  }
+
+  .profile-picture-link {
+    padding: 20px 20px 50px;
+    text-align: left;
+  }
+
+  .submenu {
+    display: block !important;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
   }
 }
+
+/* Navigation bar styling for Desktop ends here */
+
+/* Mobile menu starts here*/
+@media all and (min-width: 360px) and (max-width: 720px) {
+  .hero-central-text {
+    visibility: hidden;
+  }
+
+  .navbar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-menu {
+    width: 100%;
+    padding-top: 3vh;
+  }
+
+  .navbar li a {
+    display: block;
+    padding: 1vh;
+  }
+
+  .navbar li.subitem a {
+    padding: 15px;
+  }
+
+  .toggle {
+    order: 1;
+    font-size: 20px;
+  }
+
+  .item.button {
+    order: 2;
+  }
+
+  .item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+  }
+
+  .active .item {
+    display: block;
+  }
+
+  .button.secondary {
+    border-bottom: 1px #444 solid;
+  }
+
+  .submenu {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+/* Navigation bar styling for mobile ends here */
+
+/* Navigation bar styling for really small screens start here*/
+
+@media all and (max-width: 300px) {
+  .navbar-menu {
+    list-style: none;
+    padding-top: 3vh;
+  }
+
+  .navbar-menu li {
+    padding: 2vh;
+  }
+
+  .hero-central-text {
+    visibility: hidden;
+  }
+}
+
+/* Navigation bar styling for really small screens end here */ /* Navigation bar styling for Tablets start here */
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .navbar-menu {
+    list-style-type: none;
+    font-size: 2vw;
+    padding-top: 2vh;
+  }
+
+  .navbar-menu li {
+    padding: 1.5vw;
+    width: 100%;
+  }
+
+  .hero-central-text {
+    visibility: hidden;
+  }
+
+  .submenu {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0vw 1vw;
+  }
+}
+
+/* Navigation bar styling for tablets end here */
